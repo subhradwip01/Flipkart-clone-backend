@@ -3,7 +3,7 @@ import env from "dotenv"
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
-import  userRoutes from "./routes/user.js"
+import  authRoutes from "./routes/auth.js"
 
 const app = express();
 
@@ -13,7 +13,7 @@ const MONGO_URI=`mongodb+srv://subhradwip:${process.env.MONGO_PASS}@flipkart0.6f
 
 app.use(bodyParser());
 
-app.use("/api",userRoutes)
+app.use("/api",authRoutes)
 
 app.listen(process.env.PORT || process.env.PORT,()=>{
     console.log(`Server started at ${process.env.PORT}`)
