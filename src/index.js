@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
 import  authRoutes from "./routes/auth.js"
+import  adminAuthRouts from "./routes/admin/auth.js"
 
 const app = express();
 
@@ -14,6 +15,7 @@ const MONGO_URI=`mongodb+srv://subhradwip:${process.env.MONGO_PASS}@flipkart0.6f
 app.use(bodyParser());
 
 app.use("/api",authRoutes)
+app.use("/api",adminAuthRouts)
 
 app.listen(process.env.PORT || process.env.PORT,()=>{
     console.log(`Server started at ${process.env.PORT}`)
