@@ -37,7 +37,7 @@ export const signupController= (req,res,next)=>{
 
             if(data){
                 return res.status(201).json({
-                    user:data
+                    message:"Users created successfully"
                 })
             }
         })
