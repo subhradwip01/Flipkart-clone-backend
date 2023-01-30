@@ -1,8 +1,17 @@
 import bcrypt from "bcrypt"
 import User from "../models/user.js"
 import jwt from "jsonwebtoken"
+import { validationResult } from "express-validator"
 
 export const signupController= (req,res,next)=>{
+
+    const errs = validationResult(req);
+    if(errs){
+        return res.status(400).json({
+            errors:errs
+        })
+    }
+
     User.findOne({email:req.body.email})
     .exec((err,user)=>{
         if(user){
