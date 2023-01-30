@@ -1,5 +1,5 @@
 import { check,validationResult } from "express-validator";
-export const validateAuthReq = [
+export const validateAuthReq =
     [
         check("firstName")
         .notEmpty()
@@ -13,7 +13,15 @@ export const validateAuthReq = [
         check("password")
         .isLength({min:6})
         .withMessage("Password must be at least 6 charecter long")
-    ],
+]
+
+export const validateSigninReq = [
+        check("email")
+        .isEmail()
+        .withMessage("Valid emial is required"),
+        check("password")
+        .isLength({min:6})
+        .withMessage("Password must be at least 6 charecter long")
 ]
 
 export const isAuthRequesteValidated = (req,res,next)=>{
