@@ -8,6 +8,7 @@ export const createCategoryController = (req,res,next)=>{
     if(req.body.parentId){
         categoryObj.parentId=req.body.parentId
     }
+    console.log(categoryObj)
     const cat = new Category(categoryObj);
     cat.save((err,category)=>{
         if(err){
@@ -18,6 +19,24 @@ export const createCategoryController = (req,res,next)=>{
         if(category){
             res.status(201).json({
                 category
+            })
+        }
+    })
+}
+
+export const getCategoryController = (req,res,next)=>{
+    Category.find({})
+    .exec((error,categories)=>{
+        
+        if(error){
+            res.status(400).json({
+                error
+            })
+        }
+
+        if(categories){
+            res.status(200).json({
+                categories
             })
         }
     })

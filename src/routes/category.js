@@ -1,9 +1,8 @@
 import express from "express"
-import slugify from "slugify";
-import { createCategoryController } from "../controller/category.js";
-import Category from "../models/category.js";
+import { createCategoryController, getCategoryController } from "../controller/category.js";
+import { isAdmin, isAuthenticated } from "../middleware/isAuthenticated.js";
 const router = express.Router();
 
-router.post("/category/create",createCategoryController)
-
+router.post("/category/create",isAuthenticated,isAdmin,createCategoryController)
+router.get("/category/getcategories",getCategoryController)
 export default router
