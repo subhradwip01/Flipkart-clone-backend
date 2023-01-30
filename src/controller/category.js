@@ -1,5 +1,6 @@
 import slugify from "slugify";
 import Category from "../models/category.js";
+import { createCategoryList } from "../utils/helpers.js";
 export const createCategoryController = (req,res,next)=>{
     const categoryObj=  {
         name: req.body.name,
@@ -33,10 +34,10 @@ export const getCategoryController = (req,res,next)=>{
                 error
             })
         }
-
+        const categoryList = createCategoryList(categories)
         if(categories){
             res.status(200).json({
-                categories
+                categoryList
             })
         }
     })
