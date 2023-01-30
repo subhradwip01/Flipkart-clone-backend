@@ -1,5 +1,5 @@
 import { check,validationResult } from "express-validator";
-export const validateAuthReq =
+export const validateSignupReq =
     [
         check("firstName")
         .notEmpty()
