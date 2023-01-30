@@ -72,7 +72,7 @@ export const signinController = (req,res,next)=>{
             }
         }else{
             return res.status(400).json({
-                message:"Something went wrong!"
+                message:"Something went wrong! Provide Valid Emiail"
             })
         }
     })

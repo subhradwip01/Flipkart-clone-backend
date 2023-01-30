@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 
 import  authRoutes from "./routes/auth.js"
 import  adminAuthRouts from "./routes/admin/auth.js"
+import categoryRoutes from "./routes/category.js"
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser());
 
 app.use("/api",authRoutes)
 app.use("/api",adminAuthRouts)
+app.use("/api",categoryRoutes)
 
 app.listen(process.env.PORT || process.env.PORT,()=>{
     console.log(`Server started at ${process.env.PORT}`)
