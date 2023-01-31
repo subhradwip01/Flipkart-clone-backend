@@ -33,3 +33,13 @@ export const isAuthRequesteValidated = (req,res,next)=>{
     }
     next();
 }
+
+export const isValidFile = (req,res,next)=>{
+    console.log(req.body)
+    if(req.file.mimetype !== "image/jpeg" || req.file.mimetype !== "image/png" || req.file.mimetype !== "image/webp"){
+        return res.status(400).json({
+            messege: "Image should be in jpeg/png/webp format"
+        })
+    }
+    next();
+}

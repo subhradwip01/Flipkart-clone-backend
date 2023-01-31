@@ -16,6 +16,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    quantity: {
+      type: String,
+      required: true
+    },
     description: {
       type: String,
       required: true,
@@ -38,11 +42,13 @@ const productSchema = new mongoose.Schema(
     ],
     category:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Category"
+        ref:"Category",
+        required: true
     },
     createBy : {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'user' 
+        ref:'user',
+        required:true 
     },
     UpdatedAt: Date
   },
