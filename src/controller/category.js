@@ -9,7 +9,9 @@ export const createCategoryController = (req,res,next)=>{
     if(req.body.parentId){
         categoryObj.parentId=req.body.parentId
     }
-    console.log(categoryObj)
+    if(req.file) {
+        categoryObj.categoryImage = process.env.BASE_LINK +"/" + req.file.filename
+    }
     const cat = new Category(categoryObj);
     cat.save((err,category)=>{
         if(err){

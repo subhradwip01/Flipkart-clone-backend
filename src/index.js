@@ -8,6 +8,7 @@ import  adminAuthRouts from "./routes/admin/auth.js"
 import categoryRoutes from "./routes/category.js"
 import productRoutes from "./routes/product.js"
 import cartRoutes from "./routes/cart.js"
+import { imagePath } from "./utils/helpers.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ const MONGO_URI=`mongodb+srv://subhradwip:${process.env.MONGO_PASS}@flipkart0.6f
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/public/image",express.static(imagePath))
 app.use("/api",authRoutes)
 app.use("/api",adminAuthRouts)
 app.use("/api",categoryRoutes)

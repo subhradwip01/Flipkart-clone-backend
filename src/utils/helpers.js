@@ -25,11 +25,11 @@ export const createCategoryList = (categories,parentId = null) => {
 }
 
 const __filename = fileURLToPath(import.meta.url);
-
+export const imagePath = path.join(path.dirname(__filename),'../uploads/')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(path.dirname(__filename),'../uploads/'))
+      cb(null, imagePath)
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
