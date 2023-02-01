@@ -7,6 +7,7 @@ import  authRoutes from "./routes/auth.js"
 import  adminAuthRouts from "./routes/admin/auth.js"
 import categoryRoutes from "./routes/category.js"
 import productRoutes from "./routes/product.js"
+import cartRoutes from "./routes/cart.js"
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/api",authRoutes)
 app.use("/api",adminAuthRouts)
 app.use("/api",categoryRoutes)
 app.use("/api",productRoutes)
+app.use("/api",cartRoutes)
 
 app.listen(process.env.PORT || process.env.PORT,()=>{
     console.log(`Server started at ${process.env.PORT}`)
