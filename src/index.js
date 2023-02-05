@@ -2,6 +2,7 @@ import express from "express";
 import env from "dotenv"
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import cors from "cors"
 
 import  authRoutes from "./routes/auth.js"
 import  adminAuthRouts from "./routes/admin/auth.js"
@@ -16,6 +17,7 @@ env.config();
 
 const MONGO_URI=`mongodb+srv://subhradwip:${process.env.MONGO_PASS}@flipkart0.6fif4l7.mongodb.net/?retryWrites=true&w=majority`
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public/image",express.static(imagePath))
