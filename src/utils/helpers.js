@@ -2,12 +2,13 @@ import multer from "multer";
 import path from "path"
 import { fileURLToPath } from "url";
 import slugify from "slugify";
-export const createCategoryList = (categories,parentId = null) => {
 
+export const createCategoryList = (categories,parentId = null) => {
     const categoryList = [];
+    console.log("categories",categories,"parentId",parentId)
     let filterdCat;
-    if(parentId === null ) {
-        filterdCat = categories.filter(cat=>categories.parentId == undefined);
+    if(parentId === null) {
+        filterdCat = categories.filter(cat=>cat.parentId == undefined);
     }else{
         filterdCat = categories.filter(cat=>cat.parentId == parentId);
     }

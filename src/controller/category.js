@@ -36,6 +36,7 @@ export const getCategoryController = (req,res,next)=>{
                 error
             })
         }
+        // console.log(categories)
         const categoryList = createCategoryList(categories)
         if(categories){
             res.status(200).json({
