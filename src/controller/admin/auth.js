@@ -7,7 +7,7 @@ export const signupController= (req,res,next)=>{
     .exec((err,user)=>{
         if(user){
             return res.status(400).json({
-                message:"User already registered"
+                message:"User with email id already registered"
             })
         }
 
@@ -39,7 +39,7 @@ export const signupController= (req,res,next)=>{
 
             if(data){
                 return res.status(201).json({
-                    message:"Users created successfully"
+                    message:"Admin created successfully"
                 })
             }
         })
