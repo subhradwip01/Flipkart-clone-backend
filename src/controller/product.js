@@ -16,7 +16,7 @@ export const createProductController = (req,res,next)=>{
     if(req.files.length > 0) {
         productPictures =  req.files.map(file => {
             return {
-                img: file.filename
+                img: process.env.BASE_LINK +"/" + file.filename
             }
         })
     }
@@ -43,5 +43,25 @@ export const createProductController = (req,res,next)=>{
         res.status(200).json({
             product
         })
+    })
+}
+
+
+export const getProductController = (req,res,next)=>{
+    Product.find({})
+    .exec((error,products)=>{
+        
+        if(error){
+            res.status(400).json({
+                error
+            })
+        }
+        // console.log(categories)
+        
+        if(products){
+            res.status(200).json({
+                products
+            })
+        }
     })
 }
