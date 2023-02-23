@@ -12,12 +12,13 @@ export const createCategoryList = (categories,parentId = null) => {
     }else{
         filterdCat = categories.filter(cat=>cat.parentId == parentId);
     }
-
+    
     for ( let cat of filterdCat){
         categoryList.push({
             _id:cat._id,
             name:cat.name,
             slug:cat.slug,
+            parentId:cat.parentId,
             children: createCategoryList(categories,cat._id)
         })
     }
