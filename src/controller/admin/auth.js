@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 
 export const signupController= (req,res,next)=>{
     User.findOne({email:req.body.email})
-    .exec((err,user)=>{
+    .exec(async (err,user)=>{
         if(user){
             return res.status(400).json({
                 message:"User with email id already registered"
@@ -18,7 +18,7 @@ export const signupController= (req,res,next)=>{
             password,
         }=req.body
 
-        const hash_password = bcrypt.hashSync(password,10);
+        const hash_password =await bcrypt.hash(password,10);
         const _user = new User(
             {
                 firstName,
@@ -50,10 +50,10 @@ export const signupController= (req,res,next)=>{
 
 export const signinController = (req,res,next)=>{
     User.findOne({email:req.body.email})
-    .exec((error,user)=>{
+    .exec(async (error,user)=>{
         if(error) return res.status(400).json({error})
         if(user){
-            const isValidPassword=bcrypt.compareSync(req.body.password,user.hash_password);
+            const isValidPassword=await bcrypt.compare(req.body.password,user.hash_password);
             if(isValidPassword && user.role === "admin"){
                 const token = jwt.sign({_id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:"1h"})
 
